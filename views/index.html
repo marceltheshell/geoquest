@@ -1,9 +1,71 @@
-<!-- login -->
+<!DOCTYPE html>
 <html>
-<head>
-	<title></title>
-</head>
-<body>
+ <head>
+        <meta charset="utf-8">
+        <title>GeoQuest</title>
 
+        <script src="/vendor/jquery/dist/jquery.min.js"></script>
+        <script src="/vendor/underscore/underscore-min.js"></script>
+        <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
+
+        <script src="/static/app.js"></script>
+        <link rel="stylesheet" href="/static/styles.css">
+
+
+    </head>
+    <body>
+      <div class = "container col-md-4"></div>
+    	<div class = "container col-md-4 col-centered">
+    	<h1>GeoQuest</h1>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Sign Up
+</button>
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginModal">
+  Login
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"> Sign Up</h4>
+      </div>
+      <div class="modal-footer">
+      	<form id = "signupForm" method = "post" action "/signup">
+      	<input type="text" name="username" maxlength="20" required= "true" placeholder = "Pick A Name">
+   		 <input type= "password" name="password" placeholder = "Super Secret password">
+   		  <input type= "text" name="homeCity" placeholder = "Home City">
+   		 
+        <input type="submit" value= "Sign UP" class="btn btn-primary"></button>
+    </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"> Login! </h4>
+      </div>
+      <div class="modal-footer">
+      	<form id = "loginForm" method = "post" action "/login">
+      	<input type = "hidden" name = "login" value = "true">
+      	<input type="text" name="username" maxlength="20" required= "true" placeholder = "Username">
+   		 <input type= "password" name="password" placeholder = "Password">
+        <input type="submit" value= "Login" class=" btn btn-primary"></button>
+    </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class = "container col-md-4"></div>
 </body>
 </html>
