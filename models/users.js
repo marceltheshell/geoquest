@@ -30,7 +30,7 @@ UserSchema.statics.createSecure = function(name, password, homeCity, cb) {
 }
 
 UserSchema.statics.authenticate = function(name, password, cb) {
-	this.findOne({name: name}, function (err,user){
+	this.findOne({userName: name}, function (err,user){
 		if(user === null) {
 			cb("can\'t find user with that name", null);
 		}else if (user.checkPassword(password)){
