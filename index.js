@@ -26,17 +26,37 @@ app.use(function(req,res,next){
 		req.user = null;
 	}
 	next();
-})
+});
 
 
 
 app.get("/", function (req,res) {
 	res.sendFile(path.join(views, "index.html"))
-})
+});
 
 app.get("/home", function (req,res) {
 	res.sendFile(path.join(views, "home.html"))
-})
+});
+
+app.get('/api/quests', function (req, res){
+	db.Quest.find({}, function(err, quests){
+		if(err){
+			console.log(err);
+		}else{
+			res.send(quests);
+		}
+	});
+});
+
+app.get('/api/users', function (req, res){
+	db.User.find({}, function(err, users){
+		if(err){
+			console.log(err);
+		}else{
+			res.send(users);
+		}
+	});
+});
 
 
 /*Login /signup route */

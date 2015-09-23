@@ -2,10 +2,10 @@ var db = require('./models')
 
 /* empty the user db */
 
-// db.User.remove({}, function (err, suc){
-// 	if(err){return console.log(err);}
-// 	else{console.log("Success!");}
-// })
+db.User.remove({}, function (err, suc){
+	if(err){return console.log(err);}
+	else{console.log("Success!");}
+})
 
 /* empty the quests db */
 
@@ -28,7 +28,7 @@ function newUser () {
 
 function newQuest(){
 
-		db.Quests.create({name: "new GeoQuest", location: "225 Bush St, San Francisco", description: "Making a GeoQuest App", timeRequired: 60},function(err,quests){
+		db.Quest.create({name: "new GeoQuest", location: "225 Bush St, San Francisco", description: "Making a GeoQuest App", timeRequired: 60},function(err,quests){
 		if(err){return console.log(err);}
 		else{
 		console.log(quests);
@@ -41,5 +41,10 @@ function newQuest(){
 
 
 
+<<<<<<< HEAD
 // newUser();
 // newQuest();
+=======
+newUser();
+newQuest();
+>>>>>>> 039a5f6c6f4ee8bfb3a876ae4a5a5fbe94c52d06

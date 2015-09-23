@@ -13,5 +13,5 @@ var QuestSchema = new Schema({
 
 })
 
-var Quests = mongoose.model('Quest', QuestSchema);
-module.exports = Quests;
+var Quest = mongoose.model('Quest', QuestSchema);
+module.exports = Quest;
