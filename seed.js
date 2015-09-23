@@ -13,6 +13,8 @@ var db = require('./models')
 // 	if(err){return console.log(err);}
 // 	else{console.log("Success!");}
 // })
+
+/* New user creation Example */
 function newUser () {
 	db.User.createSecure("justin", "password", "Berkeley",function(err,user){
 		if(err){return console.log(err);}
@@ -21,6 +23,8 @@ function newUser () {
 
 	})
 }
+
+/*New Quest creations example*/
 
 function newQuest(){
 
@@ -37,5 +41,5 @@ function newQuest(){
 
 
 
-newUser();
+// newUser();
 // newQuest();
