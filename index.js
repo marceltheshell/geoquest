@@ -58,6 +58,17 @@ app.get('/api/users', function (req, res){
 	});
 });
 
+app.get('/api/users/:id', function (req, res){
+	db.User.findOne({_id: req.params.id}, function(err, user){
+		if (err){
+			console.log(err);
+		}else{
+			debugger
+			res.send(user);
+		}
+	});
+});
+
 
 /*Login /signup route */
 app.post('/', function (req,res){
