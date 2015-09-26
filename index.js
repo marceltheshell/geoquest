@@ -58,19 +58,26 @@ app.get('/api/users', function (req, res){
 	});
 });
 
+app.get('/api/users/:id', function (req, res){
+	db.User.findOne({_id: req.params.id}, function(err, user){
+		if (err){
+			console.log(err);
+		}else{
+			res.send(user);
+		}
+	});
+});
+
 
 /*Login /signup route */
 app.post('/', function (req,res){
-	console.log(req.body)
 	if(req.body.login === "true") {
 		db.User.authenticate(req.body.username, req.body.password, function (err, user){
 			if(err){
 				console.log(err);
 				res.redirect("/")}
 				else{
-					console.log("logged in");
 					req.login(user)
-					console.log(req.session.userId)
 					res.redirect("/home");}
 				})
 	}
@@ -78,7 +85,6 @@ app.post('/', function (req,res){
 		db.User.createSecure(req.body.username, req.body.password, req.body.homeCity, function(err, user){
 			if(err){return console.log(err);}
 			else{
-				console.log(user);
 				req.login(user);
 				res.redirect("/home");
 			}
