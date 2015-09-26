@@ -41,10 +41,10 @@ function newQuest(){
 
 
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 // newUser();
 // newQuest();
-=======
+//=======
 newUser();
 newQuest();
->>>>>>> 039a5f6c6f4ee8bfb3a876ae4a5a5fbe94c52d06
+//>>>>>>> 039a5f6c6f4ee8bfb3a876ae4a5a5fbe94c52d06

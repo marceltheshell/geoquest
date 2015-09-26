@@ -7,6 +7,7 @@ db = require('./models')
     
  app = express();
 var views = path.join(process.cwd(), "views");
+app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use("/static", express.static("public"));
 app.use("/vendor", express.static("bower_components"));
@@ -35,7 +36,8 @@ app.get("/", function (req,res) {
 });
 
 app.get("/home", function (req,res) {
-	res.sendFile(path.join(views, "home.html"))
+	
+	res.render('home', { userName : 'Justin' } )
 });
 
 app.get('/api/quests', function (req, res){
