@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>GeoQuest</title>
+
+	<script src="/vendor/jquery/dist/jquery.min.js"></script>
+	<script src="/vendor/underscore/underscore-min.js"></script>
+	<script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
+	<script src="/static/app.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg"></script>
+
+	<link rel="stylesheet" href="/static/styles.css">
+
+</head>
+<body>
+	<div class = "container-fluid" style= "background: #ADD8E6">
+		<div class = "container-fluid">
+			<nav class="navbar navbar-default smallernav">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#">
+							GeoQuest || Welcome <%= userName %>
+						</a>
+
+
+
+						<form class="navbar-form navbar-right" role="search">
+							<div class="form-group">
+								<input type="text" class="form-control smallnav" id = "loc" placeholder="City or Neighborhood">
+							</div>
+							<button id= "locationBtn" type="btn" class="btn btn-default">submit</button>
+						</form>
+						<form class="navbar-form navbar-right " role="search">
+							<div class="form-group">
+								<input type="text" class="form-control smallnav" id = "tag" placeholder="type of quest">
+							</div>
+							<button id= "TagsBtn" type="btn" class="btn btn-default">submit</button>
+						</form>
+					</nav>
+
+
+
+
+					<div class = "row">
+
+						<div class = "col-lg-4 col-md-4 col-sm-4" style = "background: blue">
+							<h2> Your Quests</h2>
+							<hr>
+							<ul><%  console.log(toDo);toDo.forEach(function(el){ console.log(el)%>
+
+								<li><h4><%= el.name %></h4><br>
+									Description: <%= el.description %><br>
+									Location: <%= el.location %><br>
+									Time: <%= el.timeRequired%>
+								</li><hr><%})%>
+							</ul>
+						</div>
+							<div id="map" class="map_column"></div>
+						</div>
+					</div>
+
+
+
+				</body>
+				</html>

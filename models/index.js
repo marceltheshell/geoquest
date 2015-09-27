@@ -4,5 +4,5 @@ mongoose.connect( process.env.MONGOLAB_URI ||
                   process.env.MONGOHQ_URL || 
                   "mongodb://localhost/geoQuest" )
 
-module.exports.Quest = require("./quests");
+module.exports.Quest = require("./quest");
 module.exports.User = require("./users");

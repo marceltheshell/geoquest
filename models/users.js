@@ -1,16 +1,16 @@
 var mongoose = require("mongoose");
 var bcrypt = require('bcrypt');
-var Quests = require('./quests')
 var Schema = mongoose.Schema;
+var Quest = require('./quest')
 
 var UserSchema = new Schema({
 	userName: String, 
 	passwordDigest: String,
 	homeCity: String,
 	createdAt: Date,
-	toDo: [Quests],
+	toDo: [Quest.schema],
 	addedQuests: [],
-	completedQuests: [Quests],
+	completedQuests: [Quest.schema],
 	profilePic: String,
 
 })

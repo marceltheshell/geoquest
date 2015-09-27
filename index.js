@@ -7,6 +7,7 @@ db = require('./models')
     
  app = express();
 var views = path.join(process.cwd(), "views");
+app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use("/static", express.static("public"));
 app.use("/vendor", express.static("bower_components"));
@@ -16,7 +17,7 @@ app.use(function(req,res,next){
 		req.session.userId = user._id;
 	};
 	req.currentUser = function (cb) {
-		db.Profile.findOne({_id: req.session.userId}, function (err, user){
+		db.User.findOne({_id: req.session.userId}, function (err, user){
 			req.user = user;
 			cb(null, user);
 		})
@@ -35,7 +36,14 @@ app.get("/", function (req,res) {
 });
 
 app.get("/home", function (req,res) {
-	res.sendFile(path.join(views, "home.html"))
+	req.currentUser(function(err,user){
+		if (err){return console.log(err);}
+		else {
+			console.log(user)
+			res.render('home', { userName : user.userName, toDo: user.toDo} )
+		}
+	})
+	
 });
 
 app.get('/api/quests', function (req, res){
@@ -43,6 +51,7 @@ app.get('/api/quests', function (req, res){
 		if(err){
 			console.log(err);
 		}else{
+			console.log(quests)
 			res.send(quests);
 		}
 	});
