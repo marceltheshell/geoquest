@@ -45,20 +45,15 @@
 					<div class = "row">
 
 						<div class = "col-lg-4 col-md-4 col-sm-4" style = "background: blue">
-							<h2> Quest list here</h2>
-							<ul>
-								<li> Quest Template Here <br>
-									------------------<br>
-									-------------------<br>
-								</li>
-								<li> Quest Template Here <br>
-									------------------<br>
-									-------------------<br>
-								</li>
-								<li> Quest Template Here <br>
-									------------------<br>
-									-------------------<br>
-								</li>
+							<h2> Your Quests</h2>
+							<hr>
+							<ul><%  console.log(toDo);toDo.forEach(function(el){ console.log(el)%>
+
+								<li><h4><%= el.name %></h4><br>
+									Description: <%= el.description %><br>
+									Location: <%= el.location %><br>
+									Time: <%= el.timeRequired%>
+								</li><hr><%})%>
 							</ul>
 						</div>
 							<div id="map" class="map_column"></div>

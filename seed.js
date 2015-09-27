@@ -7,36 +7,36 @@ var db = require('./models')
 // 	else{console.log("Success!");}
 // })
 
-/* empty the quests db */
+// /* empty the quests db */
 
-// db.Quests.remove({}, function (err, suc){
+// db.Quest.remove({}, function (err, suc){
 // 	if(err){return console.log(err);}
 // 	else{console.log("Success!");}
 // })
 
-/* New user creation Example */
-// function newUser () {
-// 	db.User.createSecure("justin", "password", "Berkeley",function(err,user){
-// 		if(err){return console.log(err);}
-// 		else{
-// 		console.log(user);}
+// /* New user creation Example */
+function newUser () {
+	db.User.createSecure("justin", "password", "Berkeley",function(err,user){
+		if(err){return console.log(err);}
+		else{
+		console.log(user);}
 
-// 	})
-// }
+	})
+}
 
 /*New Quest creations example*/
 
-// function newQuest(){
+function newQuest(){
 
-// 		db.Quest.create({name: "new GeoQuest", location: "225 Bush St, San Francisco", description: "Making a GeoQuest App", timeRequired: 60},function(err,quests){
-// 		if(err){return console.log(err);}
-// 		else{
-// 		console.log(quests);
-// 		}
+		db.Quest.create({name: "new GeoQuest", location: "225 Bush St, San Francisco", description: "Making a GeoQuest App", timeRequired: 60},function(err,quests){
+		if(err){return console.log(err);}
+		else{
+		console.log(quests);
+		}
 
-// 	})
+	})
 	
-// }
+}
 
 function seeDB () {
 	db.User.find({}, function (err,user){
@@ -45,12 +45,38 @@ function seeDB () {
 })
 }
 
+function addQuests () {
+	var quest = {
+		name: "Database Work",
+		location: "225 Bush St, San Francisco",
+		description: "making things work",
+		timeRequired: 30
+	}
+
+	db.User.findOne({userName: "justin"}, function(err, user){
+		if (err){return console.log(err);}
+		var quest = {
+		name: "Item 3",
+		location: "225 Bush St, San Francisco",
+		description: "making things work",
+		timeRequired: 30
+	}
+		user.toDo.push(quest);
+		user.save(function(err, success) {
+			if(err){return console.log(err);}
+			console.log(user)
+		})
+
+	})
+}
 
 
-seeDB();
+
+// seeDB();
 //<<<<<<< HEAD
-// newUser();
-// newQuest();
+ // newUser();
+ // newQuest();
+ addQuests();
 //=======
 // newUser();
 // newQuest();

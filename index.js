@@ -39,7 +39,8 @@ app.get("/home", function (req,res) {
 	req.currentUser(function(err,user){
 		if (err){return console.log(err);}
 		else {
-			res.render('home', { userName : user.userName} )
+			console.log(user)
+			res.render('home', { userName : user.userName, toDo: user.toDo} )
 		}
 	})
 	
