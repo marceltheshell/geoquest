@@ -7,7 +7,7 @@ var db = require('./models')
 // 	else{console.log("Success!");}
 // })
 
-// /* empty the quests db */
+// // /* empty the quests db */
 
 // db.Quest.remove({}, function (err, suc){
 // 	if(err){return console.log(err);}
@@ -28,7 +28,7 @@ function newUser () {
 
 function newQuest(){
 
-		db.Quest.create({name: "new GeoQuest", location: "225 Bush St, San Francisco", description: "Making a GeoQuest App", timeRequired: 60},function(err,quests){
+		db.Quest.create({name: "other GeoQuest", location: "1958 Marin Ave. Berkeley, CA", description: "Making a GeoQuest App", timeRequired: 60},function(err,quests){
 		if(err){return console.log(err);}
 		else{
 		console.log(quests);
@@ -45,6 +45,13 @@ function seeDB () {
 })
 }
 
+function seeQuests () {
+	db.Quest.find({}, function (err,quests){
+		if (err){return console.log(err);}
+			console.log(quests);
+	})
+}
+
 function addQuests () {
 	var quest = {
 		name: "Database Work",
@@ -56,7 +63,7 @@ function addQuests () {
 	db.User.findOne({userName: "justin"}, function(err, user){
 		if (err){return console.log(err);}
 		var quest = {
-		name: "Item 3",
+		name: "Item 1",
 		location: "225 Bush St, San Francisco",
 		description: "making things work",
 		timeRequired: 30
@@ -73,10 +80,11 @@ function addQuests () {
 
 
 // seeDB();
+// seeQuests();
 //<<<<<<< HEAD
  // newUser();
  // newQuest();
- addQuests();
+ // addQuests();
 //=======
 // newUser();
 // newQuest();

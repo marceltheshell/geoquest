@@ -1,24 +1,16 @@
 var mongoose = require("mongoose");
 var bcrypt = require('bcrypt');
 var Schema = mongoose.Schema;
-
-var QuestSchema = new Schema({
-	name: String,
-	location: String,
-	description: String,
-	timeRequired: Number,
-	categoryTags: []
-
-})
+var Quest = require('./quest')
 
 var UserSchema = new Schema({
 	userName: String, 
 	passwordDigest: String,
 	homeCity: String,
 	createdAt: Date,
-	toDo: [QuestSchema],
+	toDo: [Quest.schema],
 	addedQuests: [],
-	completedQuests: [QuestSchema],
+	completedQuests: [Quest.schema],
 	profilePic: String,
 
 })
@@ -56,6 +48,4 @@ UserSchema.methods.checkPassword = function(password) {
 
 
 var User = mongoose.model('User', UserSchema);
-var Quest = mongoose.model('Quest', QuestSchema);
-module.exports = Quest;
 module.exports = User;

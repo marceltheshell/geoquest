@@ -51,6 +51,7 @@ app.get('/api/quests', function (req, res){
 		if(err){
 			console.log(err);
 		}else{
+			console.log(quests)
 			res.send(quests);
 		}
 	});
