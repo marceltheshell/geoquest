@@ -17,7 +17,7 @@ app.use(function(req,res,next){
 		req.session.userId = user._id;
 	};
 	req.currentUser = function (cb) {
-		db.Profile.findOne({_id: req.session.userId}, function (err, user){
+		db.User.findOne({_id: req.session.userId}, function (err, user){
 			req.user = user;
 			cb(null, user);
 		})
@@ -36,8 +36,13 @@ app.get("/", function (req,res) {
 });
 
 app.get("/home", function (req,res) {
+	req.currentUser(function(err,user){
+		if (err){return console.log(err);}
+		else {
+			res.render('home', { userName : user.userName} )
+		}
+	})
 	
-	res.render('home', { userName : 'Justin' } )
 });
 
 app.get('/api/quests', function (req, res){
